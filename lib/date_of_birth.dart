@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -9,7 +11,7 @@ class DateOfBirthPage extends StatefulWidget {
 }
 
 class _DateOfBirthPageState extends State<DateOfBirthPage> {
-  late DateTime _selectedDate;
+  late DateTime _selectedDate = DateTime.now();
   final _dateFormatter = DateFormat('yyyy-MM-dd');
   bool _isOlderThan13 = false;
   Future<void> _selectDate(BuildContext context) async {
@@ -85,25 +87,35 @@ class _DateOfBirthPageState extends State<DateOfBirthPage> {
                 ),
               ),
               child: Text(
-                _selectedDate != null
+                !_selectedDate.isNull
                     ? _dateFormatter.format(_selectedDate)
                     : 'Select date',
                 style: const TextStyle(fontSize: 16),
               ),
             ),
             const SizedBox(height: 20),
-            Visibility(
-              visible: _selectedDate != null,
+            const Visibility(
               child: Text(
-                _isOlderThan13
-                    ? 'You are older than 13 years.'
-                    : 'You must be older than 13 years to sign in.',
+                'You are older than 13 years.',
                 style: TextStyle(
                   fontSize: 14,
-                  color: _isOlderThan13 ? Colors.green : Colors.red,
+                  color: Colors.green,
                 ),
               ),
             ),
+
+            // Visibility(
+            //   visible: _selectedDate != null,
+            //   child: Text(
+            //     _isOlderThan13
+            //         ? 'You are older than 13 years.'
+            //         : 'You must be older than 13 years to sign in.',
+            //     style: TextStyle(
+            //       fontSize: 14,
+            //       color: _isOlderThan13 ? Colors.green : Colors.red,
+            //     ),
+            //   ),
+            // ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _isOlderThan13
