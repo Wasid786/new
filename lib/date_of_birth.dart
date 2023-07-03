@@ -1,60 +1,89 @@
 import 'package:flutter/material.dart';
 
-class DateOfBirth extends StatelessWidget {
+class DateOfBirth extends StatefulWidget {
+  const DateOfBirth({Key? key}) : super(key: key);
+
+  @override
+  _DateOfBirthState createState() => _DateOfBirthState();
+}
+
+class _DateOfBirthState extends State<DateOfBirth> {
+  DateTime? selectedDate;
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+
+  @override
+  void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Date of Birth'),
+        title: const Text('Date of Birth'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Welcome!',
               style: TextStyle(fontSize: 24),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Image.asset(
               'assets/calender.gif', // Replace with your GIF file path
               height: 100,
               width: 100,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
-                decoration: InputDecoration(
+                controller: firstNameController,
+                decoration: const InputDecoration(
                   labelText: 'First Name',
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: TextField(
-                decoration: InputDecoration(
+                controller: lastNameController,
+                decoration: const InputDecoration(
                   labelText: 'Last Name',
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            if (selectedDate != null) ...[
+              const SizedBox(height: 10),
+              Text(
+                'Selected Date: ${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}',
+                style: const TextStyle(fontSize: 16),
+              ),
+            ],
+            const SizedBox(height: 10),
             ElevatedButton(
               onPressed: () {
                 _selectDateOfBirth(context);
               },
-              child: Text('Select Date of Birth'),
+              child: const Text('Select Date of Birth'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 // Continue button action
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  const Color.fromARGB(255, 77, 77, 77),
+                ),
               ),
-              child: Text('Continue'),
+              child: const Text('Continue'),
             ),
           ],
         ),
@@ -63,15 +92,17 @@ class DateOfBirth extends StatelessWidget {
   }
 
   void _selectDateOfBirth(BuildContext context) async {
-    DateTime? selectedDate = await showDatePicker(
+    DateTime? pickedDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(1900),
       lastDate: DateTime.now(),
     );
 
-    if (selectedDate != null) {
-      // Handle selected date
+    if (pickedDate != null) {
+      setState(() {
+        selectedDate = pickedDate;
+      });
     }
   }
 }
