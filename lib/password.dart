@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stick/date_of_birth.dart';
 
 class PasswordPage extends StatefulWidget {
   const PasswordPage({Key? key}) : super(key: key);
@@ -68,10 +69,8 @@ class _PasswordPageState extends State<PasswordPage> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                // Navigator.push(
-                //     context,
-                //     MaterialPageRoute(
-                //         builder: (context) => const DateOfBirthPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DateOfBirth()));
               },
               style: ButtonStyle(
                 minimumSize:
