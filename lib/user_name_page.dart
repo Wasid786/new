@@ -45,7 +45,9 @@ class UsernamePage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -72,7 +74,7 @@ class UsernamePage extends StatelessWidget {
             const Text(
               'We reserved a spot for you',
               style: TextStyle(
-                color: Color.fromARGB(255, 66, 66, 66),
+                color: Color.fromARGB(255, 32, 32, 32),
               ),
             ),
           ],

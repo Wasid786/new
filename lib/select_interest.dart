@@ -100,23 +100,50 @@ class _SelectInterestPageState extends State<SelectInterestPage> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => UsernamePage()),
-                  );
-                },
-                style: ButtonStyle(
-                  minimumSize: MaterialStateProperty.all<Size>(Size(100, 40)),
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color.fromARGB(255, 87, 86, 86),
+            SizedBox(
+              height: 40,
+              width: double.minPositive,
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Container(
+                  width: 100, // Set the desired width for the button
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => UsernamePage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 77, 77, 77),
+                      padding: EdgeInsets.zero,
+                    ),
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
-                child: const Text('Save'),
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+
+              // child: ElevatedButton(
+              //   onPressed: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(builder: (context) => UsernamePage()),
+              //     );
+              //   },
+              //   style: ButtonStyle(
+              //     minimumSize: MaterialStateProperty.all<Size>(Size(100, 40)),
+              //     backgroundColor: MaterialStateProperty.all<Color>(
+              //       const Color.fromARGB(255, 87, 86, 86),
+              //     ),
+              //   ),
+              //   child: const Text('Save'),
+              // ),
             ),
             Center(
               child: GestureDetector(

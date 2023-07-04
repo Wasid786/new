@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stick/signup_by_mobile.dart';
 
 class DatePickerScreen extends StatefulWidget {
   const DatePickerScreen({Key? key}) : super(key: key);
@@ -56,19 +57,19 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
           children: [
             const SizedBox(height: 20),
             const Text(
-              'Additional text below the app bar',
+              'tell us more about yourself',
               style: TextStyle(fontSize: 16),
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Image.asset(
-              'assets/calendar.png',
+              'assets/calendar.gif',
               width: 150,
               height: 150,
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Padding(
@@ -91,13 +92,25 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
               ),
             ),
             const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20),
-              child: Text(
-                "Date Of Birth : ${currentDate.year}/${currentDate.month}/${currentDate.day}",
-                style: const TextStyle(fontSize: 15),
-                textAlign: TextAlign.start,
-              ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text(
+                  "Select your Birthday",
+                  textAlign: TextAlign.start,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Text(
+                    "Date Of Birth : ${currentDate.year}/${currentDate.month}/${currentDate.day}",
+                    style: const TextStyle(fontSize: 18),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: 20),
             Padding(
@@ -115,121 +128,40 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
                 child: const Text('Select A Date'),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(
+              height: 20,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 40,
+              width: double.minPositive,
+              child: Container(
+                width: 100, // Set the desired width for the button
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignUpMobile(),
+                      ),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 77, 77, 77),
+                    padding: EdgeInsets.zero,
+                  ),
+                  child: const Text(
+                    'Continue',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-
-// import 'package:flutter/material.dart';
-
-// class DateOfBirth extends StatefulWidget {
-//   const DateOfBirth({Key? key}) : super(key: key);
-
-//   @override
-//   _DateOfBirthState createState() => _DateOfBirthState();
-// }
-
-// class _DateOfBirthState extends State<DateOfBirth> {
-//   DateTime? selectedDate;
-//   TextEditingController firstNameController = TextEditingController();
-//   TextEditingController lastNameController = TextEditingController();
-
-//   @override
-//   void dispose() {
-//     firstNameController.dispose();
-//     lastNameController.dispose();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Date of Birth'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             const Text(
-//               'Welcome!',
-//               style: TextStyle(fontSize: 24),
-//             ),
-//             const SizedBox(height: 20),
-//             Image.asset(
-//               'assets/calender.gif', // Replace with your GIF file path
-//               height: 100,
-//               width: 100,
-//             ),
-//             const SizedBox(height: 20),
-//             Padding(
-//               padding: const EdgeInsets.symmetric(horizontal: 20),
-//               child: TextField(
-//                 controller: firstNameController,
-//                 decoration: const InputDecoration(
-//                   labelText: 'First Name',
-//                 ),
-//               ),
-//             ),
-//             const SizedBox(height: 10),
-//             Padding(
-//               padding: const EdgeInsets.symmetric(horizontal: 20),
-//               child: TextField(
-//                 controller: lastNameController,
-//                 decoration: const InputDecoration(
-//                   labelText: 'Last Name',
-//                 ),
-//               ),
-//             ),
-//             if (selectedDate != null) ...[
-//               const SizedBox(height: 10),
-//               Text(
-//                 'Selected Date: ${selectedDate!.day}-${selectedDate!.month}-${selectedDate!.year}',
-//                 style: const TextStyle(fontSize: 16),
-//               ),
-//             ],
-//             const SizedBox(height: 10),
-//             ElevatedButton(
-//               onPressed: () {
-//                 _selectDateOfBirth(context);
-//               },
-//               child: const Text('Select Date of Birth'),
-//             ),
-//             const SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: () {
-//                 // Continue button action
-//               },
-//               style: ButtonStyle(
-//                 backgroundColor: MaterialStateProperty.all<Color>(
-//                   const Color.fromARGB(255, 77, 77, 77),
-//                 ),
-//               ),
-//               child: const Text('Continue'),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-
-//   void _selectDateOfBirth(BuildContext context) async {
-//     DateTime? pickedDate = await showDatePicker(
-//       context: context,
-//       initialDate: DateTime.now(),
-//       firstDate: DateTime(1900),
-//       lastDate: DateTime.now(),
-//     );
-
-//     if (pickedDate != null) {
-//       setState(() {
-//         selectedDate = pickedDate;
-//       });
-//     }
-//   }
-// }
-

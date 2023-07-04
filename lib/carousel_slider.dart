@@ -60,7 +60,7 @@ class _CarouselPageState extends State<CarouselPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(2, 30, 2, 2),
+          padding: const EdgeInsets.fromLTRB(2, 40, 2, 0),
           child: Container(
             color: Colors.grey,
             child: Column(
