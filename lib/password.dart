@@ -69,8 +69,10 @@ class _PasswordPageState extends State<PasswordPage> {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DateOfBirth()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => DatePickerScreen()));
               },
               style: ButtonStyle(
                 minimumSize:
